@@ -2,7 +2,7 @@ package stack;
 
 public class StackBasicClient {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		//to sabse pehle jisko lena h uska refrence 
@@ -16,6 +16,8 @@ public class StackBasicClient {
 		s.push(30);
 		s.push(40);
 		s.push(50);
+		s.push(80);  //error aiega ab 6 element dala to 
+
 
 
 		System.out.println(s.isFull());
