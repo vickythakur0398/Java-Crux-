@@ -2,6 +2,8 @@ package stack;
 
 public class Basic_opertaion_in_stack {
 
+		//mene try catch use nhi kia bas throw karaya h to muje main me client ke throw karani hogi
+
 	//ye mene class bana li h isme basic opration h ise use karunga jab jarurat hogi 
 	
 	
@@ -25,9 +27,14 @@ public class Basic_opertaion_in_stack {
 	
 	
 	//ab me iske andar me alag alag function banaunga 
-	 //push
-	public void push(int item)
+	public void push  (int item) throws Exception
 	{
+		//agar ye full hua to bharega to error dega
+		if(isFull())
+		{
+			throw new Exception("Stack is full");
+			//we have two option either use try and catch and handle the exception here or simply throw error to the next
+		}
 		tos++;
 		data[tos] = item;
 		
@@ -35,8 +42,12 @@ public class Basic_opertaion_in_stack {
 	
 	//pop
 	
-	public int pop()
+	public int pop() throws Exception
 	{
+		if(isEmpty())
+		{
+			throw new Exception("stack is empty");
+		}
 		int temp = data[tos];
 		data[tos] = 0;
 		tos--;
@@ -44,8 +55,12 @@ public class Basic_opertaion_in_stack {
 	}
 	
 	//peak
-	public int peak()
+	public int peak() throws Exception
 	{
+		if(isEmpty())
+		{
+			throw new Exception("stack is emptyyy");
+		}
 		return data[tos];
 	}
 
