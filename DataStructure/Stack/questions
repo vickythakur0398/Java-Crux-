@@ -1,0 +1,89 @@
+package stack;
+
+import java.util.*;
+
+public class questions {
+
+	public static void main(String[] args) throws Exception{
+		// TODO Auto-generated method stub
+
+		Basic_opertaion_in_stack s = new dyanimcStack();
+		
+		s.push(10);
+		s.push(20);
+		s.push(30);
+		s.push(40);
+		s.display();
+//		displayReverse( s);
+		//but via this my original stack is changed
+//		displayReverseRecursion(s);
+//		s.display();
+		ActualReverse(s, new dyanimcStack());
+		s.display();
+		s.display();
+	}
+	
+	
+	public static void displayReverse(Basic_opertaion_in_stack s) throws Exception
+	{
+		
+		int data [] =new int[4];
+		for(int j = 0; j<data.length; j++)
+		{
+			data[j] = s.pop();
+//			System.out.println(data[j]);
+		}
+		for(int i =data.length-1; i>=0 ; i--)
+		{
+			System.out.println(data[i]);
+		}
+		s.display();
+	}
+	
+	public static void displayReverseRecursion(Basic_opertaion_in_stack s ) throws Exception
+	{
+		if(s.isEmpty())
+		{
+			return;
+		}
+		
+		int temp = s.pop();
+		displayReverseRecursion(s);
+		System.out.println(temp);
+		s.push(temp);
+		
+	}
+	
+	public static void ActualReverse(Basic_opertaion_in_stack s ,Basic_opertaion_in_stack helper  ) throws Exception
+	{
+		if(s.isEmpty())
+		{
+			//ab yaha pe mera original satck empty ho gya  ab yaha se kaam naya h
+			//new function to fill original from helper
+			ActualReverse2work(s, helper);
+			return;
+		}
+		
+		int temp = s.pop();
+		helper.push(temp);
+		ActualReverse(s, helper);
+		
+	}
+	public static void ActualReverse2work(Basic_opertaion_in_stack s ,Basic_opertaion_in_stack helper  ) throws Exception
+	{
+		if(helper.isEmpty())
+		{
+			return;
+		}
+		
+		int temp = helper.pop();
+
+		ActualReverse(s, helper);
+		s.push(temp);
+		
+		
+		
+	}
+
+
+}
